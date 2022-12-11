@@ -1,0 +1,41 @@
+<h1 class="mat-headline-4">LOGIN</h1>
+<form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="form-control">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput formControlName="email" autocomplete="off" />
+    <mat-error
+      *ngIf="!loginForm.get('email')?.valid && loginForm.get('email')?.touched"
+    >
+      Please enter a valid email address!
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="form-control">
+    <mat-label>Password</mat-label>
+    <input
+      type="email"
+      matInput
+      formControlName="password"
+      autocomplete="off"
+    />
+    <mat-error
+      *ngIf="
+        !loginForm.get('password')?.valid && loginForm.get('password')?.touched
+      "
+    >
+      Password must be at least 6 symbols!
+    </mat-error>
+  </mat-form-field>
+
+  <mat-progress-spinner *ngIf="loading"></mat-progress-spinner>
+  <div *ngIf="!loading" class="form-control button-div">
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!loginForm.valid"
+      [ngClass]="{ disabled: !loginForm.valid === true }"
+    >
+      Login
+    </button>
+  </div>
+  <p *ngIf="!loading && error" class="http-error">{{ error }}</p>
+</form>

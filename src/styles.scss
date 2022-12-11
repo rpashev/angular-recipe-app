@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+app-root {
+  position: relative;
+  min-height: 100vh;
+  display: block;
+
+  main {
+    min-width: 320px;
+    max-width: 2000px;
+    margin: 0 auto;
+  }
+}
+router-outlet {
+  display: none;
+}
+.mat-drawer-container {
+  background-color: white;
+}

@@ -1,0 +1,47 @@
+:host {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  max-width: 90%;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+
+  .form-control {
+    width: 100%;
+    border: none;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .http-error {
+    color: red;
+    width: 100%;
+  }
+}
+
+.passwords {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (max-width: 40em) {
+  .button-div {
+    margin-top: 1.25rem;
+    button {
+      width: 100%;
+    }
+  }
+}
