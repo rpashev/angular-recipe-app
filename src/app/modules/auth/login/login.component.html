@@ -12,7 +12,7 @@
   <mat-form-field class="form-control">
     <mat-label>Password</mat-label>
     <input
-      type="email"
+      type="password"
       matInput
       formControlName="password"
       autocomplete="off"
@@ -26,7 +26,6 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-progress-spinner *ngIf="loading"></mat-progress-spinner>
   <div *ngIf="!loading" class="form-control button-div">
     <button
       mat-raised-button
@@ -37,5 +36,6 @@
       Login
     </button>
   </div>
+  <mat-spinner [diameter]="64" *ngIf="loading"></mat-spinner>
   <p *ngIf="!loading && error" class="http-error">{{ error }}</p>
 </form>

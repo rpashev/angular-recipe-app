@@ -73,7 +73,6 @@
     </mat-form-field>
   </div>
 
-  <mat-progress-spinner *ngIf="loading"></mat-progress-spinner>
   <div class="form-control button-div">
     <button
       mat-raised-button
@@ -85,5 +84,6 @@
       Sign Up
     </button>
   </div>
+  <mat-spinner [diameter]="64" *ngIf="loading"></mat-spinner>
   <p *ngIf="!loading && error" class="http-error">{{ error }}</p>
 </form>

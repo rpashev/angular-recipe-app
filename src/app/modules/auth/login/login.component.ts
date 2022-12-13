@@ -38,9 +38,11 @@ export class LoginComponent implements OnInit {
           this.loading = false;
           this.router.navigate(['/']);
         },
-        error: (err) => console.log(err),
+        error: (error) => {
+          this.error = error.error?.message || 'Something went wrong!';
+          this.loading = false;
+        },
       });
-      this.loading = false;
     }
   }
 }

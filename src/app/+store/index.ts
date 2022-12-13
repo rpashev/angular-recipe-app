@@ -1,5 +1,5 @@
 import { ActionReducerMap, createReducer, on } from '@ngrx/store';
-import { login, logout } from './actions';
+import { autoLogin, login, logout } from './actions';
 
 export interface IMainState {
   token: string | null;
@@ -28,10 +28,23 @@ const mainInitialState: IMainState = {
 const mainReducer = createReducer<IMainState>(
   mainInitialState,
   on(login, (state, { userData }) => {
+    localStorage.setItem(
+      'user',
+      JSON.stringify({ ...userData, isLoggedIn: true })
+    );
     return { ...userData, isLoggedIn: true };
   }),
+
   on(logout, (state) => {
+    localStorage.removeItem('user');
     return mainInitialState;
+  }),
+
+  on(autoLogin, (state) => {
+    const user = localStorage.getItem('user');
+    if (user) {
+      return { ...JSON.parse(user) };
+    }
   })
 );
 

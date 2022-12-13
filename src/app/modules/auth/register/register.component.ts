@@ -51,7 +51,16 @@ export class RegisterComponent implements OnInit {
       const { firstName, lastName, email } = this.registerForm.value;
       const { password, repeatPassword } = this.registerForm.value.passwords;
       const data = { firstName, lastName, email, password, repeatPassword };
-      this.api.register(data).subscribe((res) => console.log(res));
+      this.api.register(data).subscribe({
+        next: () => {
+          this.loading = false;
+          this.router.navigate(['/']);
+        },
+        error: (error) => {
+          this.error = error.error?.message || 'Something went wrong!';
+          this.loading = false;
+        },
+      });
     }
   }
 
