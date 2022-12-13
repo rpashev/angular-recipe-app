@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   error: null | string = null;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private api: ApiService) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -32,7 +33,14 @@ export class LoginComponent implements OnInit {
       const { email, password } = this.loginForm.value;
       const data = { email, password };
 
-      console.log(data);
+      this.api.login(data).subscribe({
+        next: () => {
+          this.loading = false;
+          this.router.navigate(['/']);
+        },
+        error: (err) => console.log(err),
+      });
+      this.loading = false;
     }
   }
 }

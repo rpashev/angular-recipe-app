@@ -9,6 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 import { ParentErrorStateMatcher } from '../ErrorStateManager';
 
 @Component({
@@ -22,7 +23,11 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   parentErrorStateMatcher = new ParentErrorStateMatcher();
 
-  constructor(private router: Router, private fb: FormBuilder) {}
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private api: ApiService
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -46,7 +51,7 @@ export class RegisterComponent implements OnInit {
       const { firstName, lastName, email } = this.registerForm.value;
       const { password, repeatPassword } = this.registerForm.value.passwords;
       const data = { firstName, lastName, email, password, repeatPassword };
-      console.log(data);
+      this.api.register(data).subscribe((res) => console.log(res));
     }
   }
 
