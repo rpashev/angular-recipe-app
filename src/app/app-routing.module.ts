@@ -6,6 +6,8 @@ import { LoginComponent } from './modules/auth/login/login.component';
 import { LogoutComponent } from './modules/auth/logout/logout.component';
 import { RegisterComponent } from './modules/auth/register/register.component';
 import { HomeComponent } from './modules/core/home/home.component';
+import { AuthoredComponent } from './modules/user/authored/authored.component';
+import { FavoritesComponent } from './modules/user/favorites/favorites.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,16 @@ const routes: Routes = [
   {
     path: 'logout',
     component: LogoutComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'favorites',
+    component: FavoritesComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'authored',
+    component: AuthoredComponent,
     canActivate: [AuthGuard],
   },
 ];

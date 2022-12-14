@@ -9,7 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api.service';
+import { UserApiService } from 'src/app/services/user.service';
 import { ParentErrorStateMatcher } from '../ErrorStateManager';
 
 @Component({
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private api: ApiService
+    private userApi: UserApiService
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
       const { firstName, lastName, email } = this.registerForm.value;
       const { password, repeatPassword } = this.registerForm.value.passwords;
       const data = { firstName, lastName, email, password, repeatPassword };
-      this.api.register(data).subscribe({
+      this.userApi.register(data).subscribe({
         next: () => {
           this.loading = false;
           this.router.navigate(['/']);

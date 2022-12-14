@@ -16,8 +16,8 @@
       </ng-template>
       <ng-template [ngIf]="isLoggedIn$ | async">
         <a mat-list-item routerLink="#">Add recipe</a>
-        <a mat-list-item routerLink="#">Favorites</a>
-        <a mat-list-item routerLink="#">My recipes</a>
+        <a mat-list-item routerLink="/favorites">Favorites</a>
+        <a mat-list-item routerLink="/authored">My recipes</a>
         <a mat-list-item routerLink="/logout">Logout</a>
       </ng-template>
     </mat-nav-list>

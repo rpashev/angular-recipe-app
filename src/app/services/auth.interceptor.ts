@@ -11,16 +11,22 @@ import { getToken } from '../+store/selectors';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private store: Store) {}
+  token!: string | null;
+  constructor(private store: Store) {
+    this.store.select(getToken).subscribe((val) => {
+      console.log(val);
+      this.token = val;
+    });
+  }
 
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const token = this.store.select(getToken);
-    if (token) {
+    console.log(this.token);
+    if (this.token) {
       const authRequest = request.clone({
-        headers: request.headers.set('Authorization', `Bearer ${token}`),
+        headers: request.headers.set('Authorization', `Bearer ${this.token}`),
       });
       return next.handle(authRequest);
     }

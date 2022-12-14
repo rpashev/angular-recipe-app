@@ -9,7 +9,7 @@ import { ILoginUserData, ISignUpUserData } from '../interfaces';
 @Injectable({
   providedIn: 'root',
 })
-export class ApiService {
+export class UserApiService {
   baseUrl = environment.baseURL;
 
   constructor(private http: HttpClient, private store: Store) {}
