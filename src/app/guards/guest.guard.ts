@@ -14,7 +14,14 @@ import { getisLoggedIn } from '../+store/selectors';
   providedIn: 'root',
 })
 export class GuestGuard implements CanActivate {
-  constructor(private store: Store, private router: Router) {}
+  loggedIn = false;
+
+  constructor(private store: Store, private router: Router) {
+    this.store.select(getisLoggedIn).subscribe((val) => {
+      console.log(val);
+      this.loggedIn = val;
+    });
+  }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -23,8 +30,7 @@ export class GuestGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const loggedIn = this.store.select(getisLoggedIn) === null ? false : true;
-    if (!loggedIn) return true;
+    if (!this.loggedIn) return true;
     return this.router.createUrlTree(['/']);
   }
 }
