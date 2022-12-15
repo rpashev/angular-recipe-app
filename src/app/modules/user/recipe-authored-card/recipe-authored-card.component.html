@@ -1,0 +1,22 @@
+<mat-card class="card">
+  <img
+    mat-card-image
+    src="https://www.simplyrecipes.com/thmb/LLhiA8KZ7JZ5ZI0g-1bF1eg-gGM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2018__10__HT-Make-an-Omelet-LEAD-HORIZONTAL-17cd2e469c4a4ccbbd1273a7cae6425c.jpg"
+    alt="Meal image"
+    class="img"
+  />
+  <div class="content">
+    <mat-card-header class="card-header">
+      <mat-card-title>{{ title }}</mat-card-title>
+      <mat-card-subtitle class="subtitle">{{ summary }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions class="actions">
+      <ng-template [ngIf]="isAuthor">
+        <button mat-button>DELETE</button>
+        <button mat-button>EDIT</button>
+      </ng-template>
+      <button *ngIf="isFavorite" mat-button>REMOVE</button>
+      <button mat-button>DETAILS</button>
+    </mat-card-actions>
+  </div>
+</mat-card>

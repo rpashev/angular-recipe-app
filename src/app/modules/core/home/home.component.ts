@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.loadRecipes();
   }
+
   loadRecipes() {
     this.loading = true;
     this.error = null;

@@ -1,0 +1,17 @@
+<mat-card class="example-card">
+  <img
+    mat-card-image
+    src="https://www.simplyrecipes.com/thmb/LLhiA8KZ7JZ5ZI0g-1bF1eg-gGM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2018__10__HT-Make-an-Omelet-LEAD-HORIZONTAL-17cd2e469c4a4ccbbd1273a7cae6425c.jpg"
+    alt="Meal image"
+  />
+  <mat-card-header class="card-header">
+    <mat-card-title>{{ title }}</mat-card-title>
+    <mat-chip-listbox aria-label="Fish selection">
+      <mat-chip-option *ngFor="let tag of tagsArr">{{ tag }}</mat-chip-option>
+    </mat-chip-listbox>
+  </mat-card-header>
+  <mat-card-actions class="actions">
+    <button mat-button>LIKE</button>
+    <button mat-button>DETAILS</button>
+  </mat-card-actions>
+</mat-card>

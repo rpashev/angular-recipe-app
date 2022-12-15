@@ -1,0 +1,19 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.my-grid {
+  display: flex;
+  padding: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  gap: 3rem;
+  max-width: 100%;
+}

@@ -1,0 +1,23 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.my-grid {
+  width: 100%;
+  padding: 2rem;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 280px);
+  gap: 4rem;
+}
+
+.spinner {
+  margin-top: 4rem;
+}

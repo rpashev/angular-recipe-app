@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
+import { RecipeModule } from '../recipe/recipe.module';
 
 @NgModule({
   declarations: [NavigationComponent, HomeComponent],
@@ -21,6 +23,8 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     MatListModule,
     RouterModule,
+    SharedModule,
+    RecipeModule,
   ],
   exports: [NavigationComponent, HomeComponent],
 })

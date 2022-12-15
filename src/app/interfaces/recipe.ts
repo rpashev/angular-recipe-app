@@ -8,4 +8,5 @@ export interface IRecipeMain {
   servings: number;
   summary: string;
   directions: string;
+  _id: string;
 }

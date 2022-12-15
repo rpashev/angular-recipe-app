@@ -15,14 +15,14 @@
         <a mat-list-item routerLink="/register">Register</a>
       </ng-template>
       <ng-template [ngIf]="isLoggedIn$ | async">
-        <a mat-list-item routerLink="#">Add recipe</a>
+        <a mat-list-item routerLink="/create-recipe">Add recipe</a>
         <a mat-list-item routerLink="/favorites">Favorites</a>
         <a mat-list-item routerLink="/authored">My recipes</a>
         <a mat-list-item routerLink="/logout">Logout</a>
       </ng-template>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content class="content">
     <mat-toolbar color="primary">
       <button
         type="button"

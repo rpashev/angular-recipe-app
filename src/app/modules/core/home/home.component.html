@@ -1,2 +1,18 @@
-<p>home works!{{ recipes | json }}</p>
-<p>{{ error }}</p>
+<div class="page">
+  <h1 class="headline-1">Discover tasty recipes!</h1>
+  <ng-template [ngIf]="!recipes">
+    <p *ngIf="!recipes && !loading">No recipes yet!</p>
+  </ng-template>
+  <mat-spinner [diameter]="64" *ngIf="loading" class="spinner"></mat-spinner>
+  <p *ngIf="error">{{ error }}</p>
+  <div *ngIf="recipes" class="my-grid">
+    <app-recipe-card
+      *ngFor="let recipe of recipes"
+      [img]="recipe.img"
+      [title]="recipe.title"
+      [tags]="recipe.tags"
+      [id]="recipe._id"
+    >
+    </app-recipe-card>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+.card {
+  width: 800px;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+.img {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+}
+.subtitle {
+  margin-top: 0.5rem;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.actions {
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .card {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
