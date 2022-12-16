@@ -1,27 +1,105 @@
 # AngularRecipeApp
+A responsive single page application built with Angular, allowing users to browse, create, edit, and manage lists of cooking recipes.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.3.
+Here you can find the **[REST API](https://github.com/rpashev/recipes-REST-express)** that I have created for the app.  
 
-## Development server
+> Live demo **[HERE](soon)**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Table of Contents
+* [General Info](#general-information)
+* [Challenges](#challenges)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Setup](#setup)
+* [Room for Improvement](#room-for-improvement)
+* [Contact](#contact)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## General Information
+An Angular application, built for a course I was taking at Software University in the end of 2022. This was my second personal project written in Angular and it served for confirming and expanding my knowledge of the framework. I also created a REST API for this app, built with Node/Express. 
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Challenges
+- Angular Material was surprisingly limiting in its capabilities
+- Splitting the app into modules in an optimal manner
+- RxJS's learning curve is steep and understanding the different operators is a challenge
+- TypeScript's is great but sometimes it's a fight with the compiler
+- Thinking of design ideas is often challenging
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Technologies Used  
 
-## Running end-to-end tests
+### Front End
+- Angular 15
+- Angular Material
+- RxJS
+- TypeScript
+- SASS/SCSS
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+  
+ ### Back End
+ - Node
+ - Express 
+ - MongoDB
+ - Mongo Atlas
+ - Mongoose
+ - JWT
+ - Axios
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Features
+### Anonymous users are able to:
+- browse recipes on the homepage
+- visit the recipe details page
+- register
+- login
+
+### Authenticated users are able to:
+- user can browse recipes on the homepage
+- user can visit the recipe details page
+- user can add a recipe
+- user can edit his recipes
+- user can delete his recipes
+- user can view his own recipes
+- user can add a recipe to favorites
+- user can remove a recipe from favorites
+- user can view his favorite recipes
+- user can logout
+
+
+## Setup
+### To get a local copy up and running follow these simple steps:
+
+1. Make sure you have **`node`** and **`npm`** installed globally on your machine.  
+
+3. Clone the repo  
+    ### `git clone https://github.com/rpashev/angular-recipe-app.git`  
+
+3. Install NPM packages  
+    ### `npm install`    
+  
+4. Run the app in development mode with hot reloading  
+    ### `ng serve`  
+
+5. You can view the app on [http://localhost:4200](http://localhost:4200)  
+ 
+7. To build for production run the following command  
+    ### `ng build`
+
+
+## Room for Improvement
+- pagination - both on frontend and backend
+- better design in terms of UI
+- add a rating feature
+- add a review feature
+- predefined tags as options/checkboxes instead of entered as text inputs
+- recipe directions provided in steps
+- filters for recipes based on tags, rating, date created, etc.
+- implement an "Auto Logout" functionality on JWT expiration
+- improve user feedback
+- break up some of the bigger components into smaller ones
+
+
+## Contact
+Created by rpashev - feel free to [contact me](https://www.rpashev.com/).
+
