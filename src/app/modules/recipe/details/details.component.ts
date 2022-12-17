@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { IMainState } from 'src/app/+store';
 import { addToFavorites, updateUserLocalStorage } from 'src/app/+store/actions';
+import { getFavorites } from 'src/app/+store/selectors';
 import { IRecipeMain } from 'src/app/interfaces';
 import { RecipeApiService } from 'src/app/services/recipe.service';
 
@@ -17,6 +18,7 @@ export class DetailsComponent {
   loading = false;
   error: null | string = null;
   recipe!: IRecipeMain | null;
+  isInFavorites!: boolean;
 
   constructor(
     private snackbar: MatSnackBar,
@@ -31,6 +33,13 @@ export class DetailsComponent {
     });
 
     this.getSingleRecipe();
+    this.store.select(getFavorites).subscribe((favs) => {
+      if (favs.includes(this.id)) {
+        this.isInFavorites = true;
+      } else {
+        this.isInFavorites = false;
+      }
+    });
   }
 
   getSingleRecipe() {
@@ -60,7 +69,7 @@ export class DetailsComponent {
         this.store.dispatch(addToFavorites({ id: this.id }));
         this.store.dispatch(updateUserLocalStorage());
         this.snackbar.open('Added to favorites!', '', {
-          // duration: 3000,
+          duration: 3000,
           panelClass: ['my-success-snackbar'],
         });
       },

@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { addToFavorites, updateUserLocalStorage } from 'src/app/+store/actions';
+import { getFavorites } from 'src/app/+store/selectors';
 import { RecipeApiService } from 'src/app/services/recipe.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class RecipeCardComponent {
   @Input() id!: string;
   loading = false;
   error: string | null = null;
+  isInFavorites!: boolean;
 
   constructor(
     private store: Store,
@@ -24,6 +26,16 @@ export class RecipeCardComponent {
     private snackbar: MatSnackBar,
     private router: Router
   ) {}
+
+  ngOnInit() {
+    this.store.select(getFavorites).subscribe((favs) => {
+      if (favs.includes(this.id)) {
+        this.isInFavorites = true;
+      } else {
+        this.isInFavorites = false;
+      }
+    });
+  }
 
   onAddToFavorites() {
     this.loading = true;
@@ -35,7 +47,7 @@ export class RecipeCardComponent {
         this.store.dispatch(addToFavorites({ id: this.id }));
         this.store.dispatch(updateUserLocalStorage());
         this.snackbar.open('Added to favorites!', '', {
-          // duration: 3000,
+          duration: 3000,
           panelClass: ['my-success-snackbar'],
         });
       },
