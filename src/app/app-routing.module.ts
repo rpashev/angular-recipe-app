@@ -49,7 +49,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'edit-recipe',
+    path: 'edit/:recipeId',
     component: EditRecipeComponent,
     canActivate: [AuthGuard],
   },

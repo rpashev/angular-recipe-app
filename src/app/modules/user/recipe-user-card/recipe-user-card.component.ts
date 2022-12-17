@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { RecipeApiService } from 'src/app/services/recipe.service';
 
 @Component({
@@ -21,7 +22,8 @@ export class RecipeUserCardComponent {
 
   constructor(
     private recipeApi: RecipeApiService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private router: Router
   ) {}
 
   onRemoveFromFavorites() {
@@ -73,5 +75,9 @@ export class RecipeUserCardComponent {
         this.loading = false;
       },
     });
+  }
+
+  navigateToEditPage() {
+    this.router.navigate([`edit/${this.id}`]);
   }
 }
