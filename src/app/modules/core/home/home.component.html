@@ -1,5 +1,5 @@
 <div class="page">
-  <h1 class="headline-1">Discover tasty recipes!</h1>
+  <h1 class="mat-headline-4">DISCOVER TASTY RECIPES!</h1>
   <ng-template [ngIf]="!recipes">
     <p *ngIf="!recipes && !loading">No recipes yet!</p>
   </ng-template>
@@ -8,7 +8,7 @@
   <div *ngIf="recipes" class="my-grid">
     <app-recipe-card
       *ngFor="let recipe of recipes"
-      [img]="recipe.img"
+      [imageUrl]="recipe.imageUrl"
       [title]="recipe.title"
       [tags]="recipe.tags"
       [id]="recipe._id"

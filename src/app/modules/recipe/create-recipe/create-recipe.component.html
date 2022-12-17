@@ -48,7 +48,7 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field class="form-control">
-      <mat-label>Tags</mat-label>
+      <mat-label>Tags separated by comma</mat-label>
       <input type="text" matInput formControlName="tags" autocomplete="off" />
       <mat-error
         *ngIf="
@@ -166,7 +166,14 @@
   </section>
 
   <div *ngIf="!loading" class="form-control button-div">
-    <button mat-raised-button color="primary">Submit</button>
+    <button
+      [disabled]="!recipeForm.valid"
+      [ngClass]="{ disabled: !recipeForm.valid === true }"
+      mat-raised-button
+      color="primary"
+    >
+      Submit
+    </button>
   </div>
   <mat-spinner [diameter]="64" *ngIf="loading"></mat-spinner>
 </form>

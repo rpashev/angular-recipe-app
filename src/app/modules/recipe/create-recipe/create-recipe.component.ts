@@ -6,7 +6,11 @@ import {
   FormBuilder,
   FormArray,
 } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { addToAuthored, updateUserLocalStorage } from 'src/app/+store/actions';
+import { RecipeApiService } from 'src/app/services/recipe.service';
 import { UserApiService } from 'src/app/services/user.service';
 
 @Component({
@@ -21,8 +25,10 @@ export class CreateRecipeComponent {
 
   constructor(
     private router: Router,
-    private userApi: UserApiService,
-    private fb: FormBuilder
+    private recipeApi: RecipeApiService,
+    private fb: FormBuilder,
+    private store: Store,
+    private snackbar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -35,7 +41,7 @@ export class CreateRecipeComponent {
       cookTime: [null, Validators.required],
       servings: [null, Validators.required],
       ingredients: this.fb.array([]),
-      directions: [null, Validators.required, Validators.maxLength(5000)],
+      directions: [null, Validators.required],
     });
   }
 
@@ -44,10 +50,32 @@ export class CreateRecipeComponent {
   }
 
   onSubmit() {
-    console.log(this.recipeForm.value.ingredients);
     if (this.recipeForm.valid) {
       this.loading = true;
       this.error = null;
+      const data = {
+        ...this.recipeForm.value,
+        ingredients: this.ingredients.value.map((ing: any) => ing?.name),
+        tags: this.recipeForm.value.tags.split(','),
+      };
+      this.recipeApi.createRecipe(data).subscribe({
+        next: (res: any) => {
+          this.loading = false;
+
+          this.store.dispatch(addToAuthored(res?._id));
+          this.store.dispatch(updateUserLocalStorage());
+          this.router.navigate(['/authored']);
+        },
+        error: (error) => {
+          console.log(error);
+          this.error = error.error?.message || 'Something went wrong!';
+          this.loading = false;
+          this.snackbar.open(this.error as any, '', {
+            duration: 3000,
+            panelClass: ['my-error-snackbar'],
+          });
+        },
+      });
     }
   }
   addIngredientInput() {

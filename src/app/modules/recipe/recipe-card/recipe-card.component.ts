@@ -11,10 +11,9 @@ import { RecipeApiService } from 'src/app/services/recipe.service';
 })
 export class RecipeCardComponent {
   @Input() tags!: string[];
-  @Input() img!: string;
+  @Input() imageUrl!: string;
   @Input() title!: string;
   @Input() id!: string;
-  tagsArr!: string[];
   loading = false;
   error: string | null = null;
 
@@ -23,10 +22,6 @@ export class RecipeCardComponent {
     private recipeApi: RecipeApiService,
     private snackbar: MatSnackBar
   ) {}
-
-  ngOnInit() {
-    this.tagsArr = this.tags[0].split(', ');
-  }
 
   onAddToFavorites() {
     this.loading = true;

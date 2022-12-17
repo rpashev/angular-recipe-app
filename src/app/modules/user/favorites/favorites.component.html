@@ -1,5 +1,5 @@
 <div class="page">
-  <h1 class="headline-1">My favorite recipes</h1>
+  <h1 class="mat-headline-4">MY FAVORITE RECIPES</h1>
   <p *ngIf="(!recipes || recipes.length == 0) && !loading">
     No recipes in favorites yet!
   </p>
@@ -8,7 +8,7 @@
   <div *ngIf="recipes" class="my-grid">
     <app-recipe-user-card
       *ngFor="let recipe of recipes"
-      [img]="recipe.img"
+      [imageUrl]="recipe.imageUrl"
       [title]="recipe.title"
       [summary]="recipe.summary"
       [id]="recipe._id"

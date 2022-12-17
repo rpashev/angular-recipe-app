@@ -2,7 +2,7 @@ export interface IRecipeMain {
   title: string;
   tags: string[];
   ingredients: string[];
-  img: string;
+  imageUrl: string;
   prepTime: number;
   cookTime: number;
   servings: number;

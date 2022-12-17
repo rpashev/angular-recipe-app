@@ -9,14 +9,13 @@ import { RecipeApiService } from 'src/app/services/recipe.service';
 })
 export class RecipeUserCardComponent {
   @Input() summary!: string;
-  @Input() img!: string;
+  @Input() imageUrl!: string;
   @Input() title!: string;
   @Input() id!: string;
   @Input() isAuthor: boolean = false;
   @Input() isFavorite: boolean = false;
   @Output() onRemovedFromFavorites = new EventEmitter();
   @Output() onDeletedAuthored = new EventEmitter();
-  tagsArr!: string[];
   loading = false;
   error: string | null = null;
 
