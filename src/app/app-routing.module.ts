@@ -56,7 +56,6 @@ const routes: Routes = [
   {
     path: 'details/:recipeId',
     component: DetailsComponent,
-    canActivate: [AuthGuard],
   },
 ];
 

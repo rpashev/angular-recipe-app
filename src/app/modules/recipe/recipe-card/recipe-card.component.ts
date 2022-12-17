@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { addToFavorites, updateUserLocalStorage } from 'src/app/+store/actions';
-import { getFavorites } from 'src/app/+store/selectors';
+import { getFavorites, getisLoggedIn } from 'src/app/+store/selectors';
 import { RecipeApiService } from 'src/app/services/recipe.service';
 
 @Component({
@@ -19,6 +19,7 @@ export class RecipeCardComponent {
   loading = false;
   error: string | null = null;
   isInFavorites!: boolean;
+  isLoggedIn!: boolean;
 
   constructor(
     private store: Store,
@@ -35,6 +36,10 @@ export class RecipeCardComponent {
         this.isInFavorites = false;
       }
     });
+
+    this.store
+      .select(getisLoggedIn)
+      .subscribe((flag) => (this.isLoggedIn = flag));
   }
 
   onAddToFavorites() {

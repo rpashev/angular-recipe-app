@@ -3,23 +3,26 @@
   <section *ngIf="!loading && recipe" class="recipe-content">
     <section class="first-big-section">
       <section class="introduction-section">
-        <button
-          *ngIf="!isInFavorites"
-          (click)="onAddToFavorites()"
-          mat-button
-          class="btn-fav"
-        >
-          <mat-icon color="primary">favorite</mat-icon>SAVE IT
-        </button>
-        <button
-          class="btn-fav"
-          [disabled]="isInFavorites"
-          [ngClass]="{ disabled: isInFavorites === true }"
-          *ngIf="isInFavorites"
-          mat-button
-        >
-          <mat-icon color="primary">check</mat-icon>SAVED
-        </button>
+        <ng-template [ngIf]="isLoggedIn">
+          <button
+            *ngIf="!isInFavorites"
+            (click)="onAddToFavorites()"
+            mat-button
+            class="btn-fav"
+          >
+            <mat-icon color="primary">favorite</mat-icon>SAVE IT
+          </button>
+          <button
+            class="btn-fav"
+            [disabled]="isInFavorites"
+            [ngClass]="{ disabled: isInFavorites === true }"
+            *ngIf="isInFavorites"
+            mat-button
+          >
+            <mat-icon color="primary">check</mat-icon>SAVED
+          </button>
+        </ng-template>
+
         <h1 class="mat-headline-4 title">{{ recipe.title }}</h1>
         <section class="cook-time">
           <div>

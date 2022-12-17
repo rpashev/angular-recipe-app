@@ -7,17 +7,19 @@
     </mat-chip-listbox>
   </mat-card-header>
   <mat-card-actions class="actions">
-    <button *ngIf="!isInFavorites" mat-button (click)="onAddToFavorites()">
-      <mat-icon color="primary">favorite</mat-icon>SAVE IT
-    </button>
-    <button
-      [disabled]="isInFavorites"
-      [ngClass]="{ disabled: isInFavorites === true }"
-      *ngIf="isInFavorites"
-      mat-button
-    >
-      <mat-icon color="primary">check</mat-icon>SAVED
-    </button>
+    <ng-template [ngIf]="isLoggedIn">
+      <button *ngIf="!isInFavorites" mat-button (click)="onAddToFavorites()">
+        <mat-icon color="primary">favorite</mat-icon>SAVE IT
+      </button>
+      <button
+        [disabled]="isInFavorites"
+        [ngClass]="{ disabled: isInFavorites === true }"
+        *ngIf="isInFavorites"
+        mat-button
+      >
+        <mat-icon color="primary">check</mat-icon>SAVED
+      </button>
+    </ng-template>
 
     <button mat-button (click)="navigateToDetailsPage()">
       <mat-icon color="primary">info</mat-icon>DETAILS
