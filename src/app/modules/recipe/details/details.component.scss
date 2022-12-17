@@ -1,0 +1,108 @@
+.page {
+  padding: 4rem 1rem;
+}
+.recipe-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.first-big-section,
+.second-big-section {
+  display: flex;
+  width: 900px;
+  max-width: 100%;
+}
+
+.second-big-section {
+  margin-top: 2rem;
+}
+
+.img {
+  display: block;
+  width: 50%;
+  max-width: 100%;
+}
+
+.introduction-section {
+  background-color: #3f51b50c;
+  padding: 2rem;
+  border-radius: 4px;
+  width: 50%;
+  max-width: 100%;
+  position: relative;
+}
+
+.directions-section,
+.ingredients-section {
+  width: 50%;
+  max-width: 100%;
+  padding: 2rem;
+}
+
+.cook-time {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.75rem;
+  margin-top: -1.5rem;
+}
+.title {
+  color: #3f51b5 !important;
+}
+.subtitle {
+  color: #3f51b5;
+  font-weight: 600;
+}
+.time-units {
+  font-size: 1.1rem;
+  margin-top: -0.5rem;
+  opacity: 0.8;
+}
+
+.summary-section {
+  margin-top: 2.5rem;
+}
+
+.summary-text {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+.spinner {
+  margin: 3rem auto;
+}
+
+.h2-title {
+  color: #3f51b5;
+  font-size: 1.6rem;
+  margin-bottom: 1.75rem;
+}
+
+.instructions-p,
+.ingredient-li {
+  line-height: 1.5;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.btn-fav {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+@media (max-width: 1020px) {
+  .first-big-section,
+  .second-big-section {
+    flex-direction: column;
+    align-items: center;
+    width: 450px;
+  }
+  .img,
+  .introduction-section,
+  .directions-section,
+  .ingredients-section {
+    width: 100%;
+  }
+}

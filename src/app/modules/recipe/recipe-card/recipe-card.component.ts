@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { addToFavorites, updateUserLocalStorage } from 'src/app/+store/actions';
 import { RecipeApiService } from 'src/app/services/recipe.service';
@@ -20,7 +21,8 @@ export class RecipeCardComponent {
   constructor(
     private store: Store,
     private recipeApi: RecipeApiService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private router: Router
   ) {}
 
   onAddToFavorites() {
@@ -47,5 +49,8 @@ export class RecipeCardComponent {
         this.loading = false;
       },
     });
+  }
+  navigateToDetailsPage() {
+    this.router.navigate([`details/${this.id}`]);
   }
 }

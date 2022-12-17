@@ -17,7 +17,7 @@
       <button *ngIf="isFavorite" mat-button (click)="onRemoveFromFavorites()">
         <mat-icon color="primary">delete</mat-icon>REMOVE
       </button>
-      <button mat-button>
+      <button mat-button (click)="navigateToDetailsPage()">
         <mat-icon color="primary">info</mat-icon>DETAILS
       </button>
     </mat-card-actions>

@@ -80,4 +80,7 @@ export class RecipeUserCardComponent {
   navigateToEditPage() {
     this.router.navigate([`edit/${this.id}`]);
   }
+  navigateToDetailsPage() {
+    this.router.navigate([`details/${this.id}`]);
+  }
 }

@@ -54,7 +54,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'details',
+    path: 'details/:recipeId',
     component: DetailsComponent,
     canActivate: [AuthGuard],
   },

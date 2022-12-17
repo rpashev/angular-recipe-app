@@ -1,1 +1,55 @@
-<p>details works!</p>
+<div class="page">
+  <mat-spinner [diameter]="64" *ngIf="loading" class="spinner"></mat-spinner>
+  <section *ngIf="!loading && recipe" class="recipe-content">
+    <section class="first-big-section">
+      <section class="introduction-section">
+        <button (click)="onAddToFavorites()" mat-button class="btn-fav">
+          <mat-icon color="primary">favorite</mat-icon>SAVE IT
+        </button>
+        <h1 class="mat-headline-4 title">{{ recipe.title }}</h1>
+        <section class="cook-time">
+          <div>
+            <p class="mat-subtitle-1 subtitle">PREP TIME</p>
+            <p class="time-units">{{ recipe.prepTime }} minutes</p>
+          </div>
+          <div>
+            <p class="mat-subtitle-1 subtitle">COOK TIME</p>
+            <p class="time-units">{{ recipe.cookTime }} minutes</p>
+          </div>
+          <div>
+            <p class="mat-subtitle-1 subtitle">TOTAL TIME</p>
+            <p class="time-units">
+              {{ recipe.prepTime + recipe.cookTime }} minutes
+            </p>
+          </div>
+        </section>
+        <section>
+          <div>
+            <p class="mat-subtitle-1 subtitle">SERVINGS</p>
+            <p class="time-units">{{ recipe.servings }} servings</p>
+          </div>
+        </section>
+        <section class="summary-section">
+          <p class="summary-text">
+            {{ recipe.summary }}
+          </p>
+        </section>
+      </section>
+      <img [src]="recipe.imageUrl" alt="Meal image" class="img" />
+    </section>
+    <section class="second-big-section">
+      <section class="ingredients-section">
+        <h2 class="h2-title">Ingredients:</h2>
+        <ul>
+          <li *ngFor="let ing of recipe?.ingredients">
+            <p class="ingredient-li">{{ ing }}</p>
+          </li>
+        </ul>
+      </section>
+      <section class="directions-section">
+        <h2 class="h2-title">Instructions:</h2>
+        <p class="instructions-p">{{ recipe.directions }}</p>
+      </section>
+    </section>
+  </section>
+</div>
