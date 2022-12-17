@@ -1,1 +1,172 @@
-<p>create-recipe works!</p>
+<h1 class="mat-headline-4">ADD A RECIPE</h1>
+<form class="form" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+  <section class="form-section first-section">
+    <mat-form-field class="form-control">
+      <mat-label>Title</mat-label>
+      <input type="text" matInput formControlName="title" autocomplete="off" />
+      <mat-error
+        *ngIf="
+          !recipeForm.get('title')?.valid && recipeForm.get('title')?.touched
+        "
+      >
+        Title is required!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-control">
+      <mat-label>Summary</mat-label>
+      <textarea
+        type="textarea"
+        matInput
+        formControlName="summary"
+        autocomplete="off"
+        cdkAutosizeMinRows="3"
+      ></textarea>
+      <mat-error
+        *ngIf="
+          !recipeForm.get('summary')?.valid &&
+          recipeForm.get('summary')?.touched
+        "
+      >
+        Summary is required!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-control">
+      <mat-label>Image Url</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="imageUrl"
+        autocomplete="off"
+      />
+      <mat-error
+        *ngIf="
+          !recipeForm.get('imageUrl')?.valid &&
+          recipeForm.get('imageUrl')?.touched
+        "
+      >
+        Image url is required!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-control">
+      <mat-label>Tags</mat-label>
+      <input type="text" matInput formControlName="tags" autocomplete="off" />
+      <mat-error
+        *ngIf="
+          !recipeForm.get('tags')?.valid && recipeForm.get('tags')?.touched
+        "
+      >
+        Tags are required!
+      </mat-error>
+    </mat-form-field>
+  </section>
+
+  <section class="form-section unit-details">
+    <mat-form-field class="form-control">
+      <mat-label>Prep Time in Minutes</mat-label>
+      <input
+        type="number"
+        matInput
+        formControlName="prepTime"
+        autocomplete="off"
+      />
+      <mat-error
+        *ngIf="
+          !recipeForm.get('prepTime')?.valid &&
+          recipeForm.get('prepTime')?.touched
+        "
+      >
+        Prep time is required!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-control">
+      <mat-label>Cook Time in Minutes</mat-label>
+      <input
+        type="number"
+        matInput
+        formControlName="cookTime"
+        autocomplete="off"
+      />
+      <mat-error
+        *ngIf="
+          !recipeForm.get('cookTime')?.valid &&
+          recipeForm.get('cookTime')?.touched
+        "
+      >
+        Cook time is required!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-control">
+      <mat-label>Servings</mat-label>
+      <input
+        type="number"
+        matInput
+        formControlName="servings"
+        autocomplete="off"
+      />
+      <mat-error
+        *ngIf="
+          !recipeForm.get('servings')?.valid &&
+          recipeForm.get('servings')?.touched
+        "
+      >
+        Servings are required!
+      </mat-error>
+    </mat-form-field>
+  </section>
+  <section class="form-section instructions-sections">
+    <div>
+      <button
+        class="btn-add"
+        type="button"
+        mat-raised-button
+        color="primary"
+        (click)="addIngredientInput()"
+      >
+        <mat-icon>add</mat-icon>
+        Add an ingredient
+      </button>
+      <ng-container formArrayName="ingredients">
+        <ng-container
+          *ngFor="let ingredientForm of ingredients.controls; let index = index"
+        >
+          <div [formGroupName]="index">
+            <mat-form-field class="form-control">
+              <mat-label>Ingredient</mat-label>
+              <input
+                formControlName="name"
+                type="text"
+                matInput
+                autocomplete="off"
+              />
+            </mat-form-field>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div>
+      <mat-form-field class="form-control">
+        <mat-label>Directions</mat-label>
+        <textarea
+          type="textarea"
+          matInput
+          formControlName="directions"
+          autocomplete="off"
+          rows="10"
+        ></textarea>
+        <mat-error
+          *ngIf="
+            !recipeForm.get('directions')?.valid &&
+            recipeForm.get('directions')?.touched
+          "
+        >
+          Directions are required!
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </section>
+
+  <div *ngIf="!loading" class="form-control button-div">
+    <button mat-raised-button color="primary">Submit</button>
+  </div>
+  <mat-spinner [diameter]="64" *ngIf="loading"></mat-spinner>
+</form>

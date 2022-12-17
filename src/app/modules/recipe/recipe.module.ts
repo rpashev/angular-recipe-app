@@ -5,6 +5,7 @@ import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
 import { DetailsComponent } from './details/details.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,7 @@ import { SharedModule } from '../shared/shared.module';
     DetailsComponent,
     RecipeCardComponent,
   ],
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, ReactiveFormsModule],
   exports: [RecipeCardComponent],
 })
 export class RecipeModule {}

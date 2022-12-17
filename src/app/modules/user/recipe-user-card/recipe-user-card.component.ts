@@ -34,7 +34,7 @@ export class RecipeUserCardComponent {
         console.log(response);
         this.loading = false;
         this.onRemovedFromFavorites.emit(this.id);
-        this.snackbar.open('Recipe removed from favorites!', '', {
+        this.snackbar.open('Removed from favorites!', '', {
           duration: 3000,
           panelClass: ['my-success-snackbar'],
         });
