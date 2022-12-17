@@ -17,3 +17,12 @@
   gap: 3rem;
   max-width: 100%;
 }
+
+@media (max-width: 600px) {
+  .page {
+    padding: 1.5rem 0;
+  }
+  .my-grid {
+    gap: 4rem;
+  }
+}

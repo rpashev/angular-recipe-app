@@ -7,13 +7,19 @@
     </mat-card-header>
     <mat-card-actions class="actions">
       <ng-template [ngIf]="isAuthor">
-        <button mat-button (click)="onDeleteRecipe()">DELETE</button>
-        <button mat-button (click)="navigateToEditPage()">EDIT</button>
+        <button mat-button (click)="onDeleteRecipe()">
+          <mat-icon color="primary">delete</mat-icon>DELETE
+        </button>
+        <button mat-button (click)="navigateToEditPage()">
+          <mat-icon color="primary">edit</mat-icon>EDIT
+        </button>
       </ng-template>
       <button *ngIf="isFavorite" mat-button (click)="onRemoveFromFavorites()">
-        REMOVE
+        <mat-icon color="primary">delete</mat-icon>REMOVE
       </button>
-      <button mat-button>DETAILS</button>
+      <button mat-button>
+        <mat-icon color="primary">info</mat-icon>DETAILS
+      </button>
     </mat-card-actions>
   </div>
 </mat-card>

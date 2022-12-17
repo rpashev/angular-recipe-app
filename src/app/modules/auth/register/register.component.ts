@@ -8,6 +8,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserApiService } from 'src/app/services/user.service';
 import { ParentErrorStateMatcher } from '../ErrorStateManager';
@@ -26,7 +27,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private userApi: UserApiService
+    private userApi: UserApiService,
+    private snackbar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -59,6 +61,10 @@ export class RegisterComponent implements OnInit {
         error: (error) => {
           this.error = error.error?.message || 'Something went wrong!';
           this.loading = false;
+          this.snackbar.open(this.error as any, '', {
+            duration: 3000,
+            panelClass: ['my-error-snackbar'],
+          });
         },
       });
     }

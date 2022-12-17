@@ -7,18 +7,35 @@
     [opened]="(isHandset$ | async) === false"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
   >
-    <mat-toolbar> Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/">Home</a>
+      <a mat-list-item routerLink="/" class="my-link">
+        <mat-icon matListItemIcon color="primary">home</mat-icon>Home</a
+      >
       <ng-template [ngIf]="!(isLoggedIn$ | async)">
-        <a mat-list-item routerLink="/login">Login</a>
-        <a mat-list-item routerLink="/register">Register</a>
+        <a mat-list-item routerLink="/login"
+          ><mat-icon matListItemIcon color="primary">login</mat-icon>Login</a
+        >
+        <a mat-list-item routerLink="/register"
+          ><mat-icon matListItemIcon color="primary">person</mat-icon
+          >Register</a
+        >
       </ng-template>
       <ng-template [ngIf]="isLoggedIn$ | async">
-        <a mat-list-item routerLink="/create-recipe">Add recipe</a>
-        <a mat-list-item routerLink="/favorites">Favorites</a>
-        <a mat-list-item routerLink="/authored">My recipes</a>
-        <a mat-list-item routerLink="/logout">Logout</a>
+        <a mat-list-item routerLink="/create-recipe"
+          ><mat-icon matListItemIcon color="primary">add</mat-icon>Add recipe</a
+        >
+        <a mat-list-item routerLink="/favorites"
+          ><mat-icon matListItemIcon color="primary">favorite</mat-icon
+          >Favorites</a
+        >
+        <a mat-list-item routerLink="/authored"
+          ><mat-icon matListItemIcon color="primary"
+            >sentiment_satisfied</mat-icon
+          >My recipes</a
+        >
+        <a mat-list-item routerLink="/logout"
+          ><mat-icon matListItemIcon color="primary">logout</mat-icon>Logout</a
+        >
       </ng-template>
     </mat-nav-list>
   </mat-sidenav>

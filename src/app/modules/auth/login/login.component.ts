@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserApiService } from 'src/app/services/user.service';
 
@@ -13,7 +14,11 @@ export class LoginComponent implements OnInit {
   loading = false;
   error: null | string = null;
 
-  constructor(private router: Router, private userApi: UserApiService) {}
+  constructor(
+    private router: Router,
+    private userApi: UserApiService,
+    private snackbar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -41,6 +46,10 @@ export class LoginComponent implements OnInit {
         error: (error) => {
           this.error = error.error?.message || 'Something went wrong!';
           this.loading = false;
+          this.snackbar.open(this.error as any, '', {
+            duration: 3000,
+            panelClass: ['my-error-snackbar'],
+          });
         },
       });
     }
