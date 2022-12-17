@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { TagBadgeComponent } from './tag-badge/tag-badge.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [TagBadgeComponent],
@@ -16,6 +17,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatInputModule,
     MatCardModule,
     MatChipsModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatProgressSpinnerModule,
@@ -23,6 +25,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatInputModule,
     MatCardModule,
     MatChipsModule,
+    MatSnackBarModule,
   ],
 })
 export class SharedModule {}

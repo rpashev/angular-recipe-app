@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
 html,
 body {
   height: 100%;
@@ -25,4 +24,24 @@ router-outlet {
 }
 .mat-drawer-container {
   background-color: white;
+}
+
+.mat-snack-bar-container {
+  max-width: 100% !important;
+}
+.my-success-snackbar {
+  background-color: #087a51 !important;
+}
+.my-error-snackbar {
+  background-color: #b91c1c !important;
+}
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: transparent !important;
+  width: 400px !important;
+  max-width: 100% !important;
+  height: 50px !important;
+  text-align: center !important;
+}
+.mat-mdc-snack-bar-container {
+  --mdc-snackbar-supporting-text-size: 18px;
 }

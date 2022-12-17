@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import {
+  removeFromFavorites,
+  updateUserLocalStorage,
+} from 'src/app/+store/actions';
 import { IRecipeMain } from 'src/app/interfaces';
 import { RecipeApiService } from 'src/app/services/recipe.service';
 
@@ -33,5 +37,11 @@ export class FavoritesComponent {
         this.loading = false;
       },
     });
+  }
+
+  onRemovedFromFavorites(id: string) {
+    this.recipes = this.recipes.filter((r) => r._id !== id);
+    this.store.dispatch(removeFromFavorites({ id }));
+    this.store.dispatch(updateUserLocalStorage());
   }
 }

@@ -1,5 +1,14 @@
 import { ActionReducerMap, createReducer, on } from '@ngrx/store';
-import { autoLogin, login, logout } from './actions';
+import {
+  addToAuthored,
+  addToFavorites,
+  autoLogin,
+  login,
+  logout,
+  removeFromAuthored,
+  removeFromFavorites,
+  updateUserLocalStorage,
+} from './actions';
 
 export interface IMainState {
   token: string | null;
@@ -45,6 +54,39 @@ const mainReducer = createReducer<IMainState>(
     if (user) {
       return { ...JSON.parse(user) };
     }
+  }),
+
+  on(updateUserLocalStorage, (state) => {
+    localStorage.setItem('user', JSON.stringify(state));
+    return state;
+  }),
+
+  on(removeFromFavorites, (state, { id }) => {
+    return {
+      ...state,
+      favorites: state.favorites.filter((r) => r != id),
+    };
+  }),
+
+  on(removeFromAuthored, (state, { id }) => {
+    return {
+      ...state,
+      authored: state.authored.filter((r) => r != id),
+    };
+  }),
+
+  on(addToFavorites, (state, { id }) => {
+    return {
+      ...state,
+      favorites: [...state.favorites, id],
+    };
+  }),
+
+  on(addToAuthored, (state, { id }) => {
+    return {
+      ...state,
+      authored: [...state.authored, id],
+    };
   })
 );
 

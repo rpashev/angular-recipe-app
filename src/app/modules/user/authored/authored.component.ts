@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import {
+  removeFromAuthored,
+  updateUserLocalStorage,
+} from 'src/app/+store/actions';
 import { IRecipeMain } from 'src/app/interfaces';
 import { RecipeApiService } from 'src/app/services/recipe.service';
 
@@ -33,5 +37,10 @@ export class AuthoredComponent {
         this.loading = false;
       },
     });
+  }
+  onDeletedAuthored(id: string) {
+    this.recipes = this.recipes.filter((r) => r._id !== id);
+    this.store.dispatch(removeFromAuthored({ id }));
+    this.store.dispatch(updateUserLocalStorage());
   }
 }
