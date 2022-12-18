@@ -57,6 +57,7 @@ const routes: Routes = [
     path: 'details/:recipeId',
     component: DetailsComponent,
   },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

@@ -17,6 +17,7 @@ export class EditRecipeComponent {
   loading = false;
   loadingExistingRecipe = false;
   error: null | string = null;
+  errorLoadingExisting: null | string = null;
   recipe: any;
 
   constructor(
@@ -50,7 +51,7 @@ export class EditRecipeComponent {
 
   getSingleRecipe() {
     this.loadingExistingRecipe = true;
-    this.error = null;
+    this.errorLoadingExisting = null;
     this.recipeApi.getSingleRecipe(this.id).subscribe({
       next: (res: any) => {
         console.log(res);
@@ -58,9 +59,10 @@ export class EditRecipeComponent {
         this.loadingExistingRecipe = false;
       },
       error: (error) => {
-        this.error = error.error?.message || 'Could not load recipe!';
+        this.errorLoadingExisting =
+          error.error?.message || 'Could not load recipe!';
         this.loadingExistingRecipe = false;
-        this.snackbar.open(this.error as any, '', {
+        this.snackbar.open(this.errorLoadingExisting as any, '', {
           duration: 3000,
           panelClass: ['my-error-snackbar'],
         });
