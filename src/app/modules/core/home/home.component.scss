@@ -21,3 +21,17 @@
 .spinner {
   margin-top: 4rem;
 }
+
+.form-control {
+  width: 500px;
+  max-width: 95%;
+}
+.title {
+  text-align: center;
+}
+
+@media (max-width: 1020px) {
+  .page {
+    padding: 3rem 1.5rem;
+  }
+}

@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { RecipeModule } from '../recipe/recipe.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [NavigationComponent, HomeComponent],
@@ -25,6 +26,7 @@ import { RecipeModule } from '../recipe/recipe.module';
     RouterModule,
     SharedModule,
     RecipeModule,
+    FormsModule,
   ],
   exports: [NavigationComponent, HomeComponent],
 })

@@ -17,6 +17,7 @@
 .card-header {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .subtitle {
   margin-top: 0.5rem;
@@ -26,6 +27,7 @@
   flex-direction: column;
   justify-content: space-between;
   max-width: 100%;
+  width: 100%;
 }
 .actions {
   margin-top: 0.75rem;

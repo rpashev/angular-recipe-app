@@ -9,9 +9,10 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
-  declarations: [TagBadgeComponent],
+  declarations: [TagBadgeComponent, FilterPipe],
   imports: [
     CommonModule,
     MatProgressSpinnerModule,
@@ -32,6 +33,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatSnackBarModule,
     MatSelectModule,
     MatIconModule,
+    FilterPipe,
   ],
 })
 export class SharedModule {}

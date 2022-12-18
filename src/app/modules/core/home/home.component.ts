@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getAuthored, getEmail } from 'src/app/+store/selectors';
+import { getAuthored } from 'src/app/+store/selectors';
 import { IRecipeMain } from 'src/app/interfaces';
 import { RecipeApiService } from 'src/app/services/recipe.service';
 
@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   loading = false;
   error: string | null = null;
   recipes!: IRecipeMain[];
+  query: string = '';
+
   constructor(private store: Store, private recipeApi: RecipeApiService) {}
 
   ngOnInit() {

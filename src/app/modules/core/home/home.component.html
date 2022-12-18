@@ -1,5 +1,9 @@
 <div class="page">
-  <h1 class="mat-headline-4">DISCOVER TASTY RECIPES!</h1>
+  <h1 class="mat-headline-4 title">DISCOVER TASTY RECIPES!</h1>
+  <mat-form-field class="form-control">
+    <mat-label>Search by title or tag...</mat-label>
+    <input type="query" matInput [(ngModel)]="query" autocomplete="off" />
+  </mat-form-field>
   <ng-template [ngIf]="!recipes">
     <p *ngIf="!recipes && !loading">No recipes yet!</p>
   </ng-template>
@@ -7,7 +11,7 @@
   <p *ngIf="error">{{ error }}</p>
   <div *ngIf="recipes" class="my-grid">
     <app-recipe-card
-      *ngFor="let recipe of recipes"
+      *ngFor="let recipe of recipes | filter : query"
       [imageUrl]="recipe.imageUrl"
       [title]="recipe.title"
       [tags]="recipe.tags"
