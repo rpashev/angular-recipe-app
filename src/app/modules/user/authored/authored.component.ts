@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import {
   removeFromAuthored,
@@ -16,7 +17,11 @@ export class AuthoredComponent {
   loading = false;
   error: string | null = null;
   recipes!: IRecipeMain[];
-  constructor(private store: Store, private recipeApi: RecipeApiService) {}
+  constructor(
+    private store: Store,
+    private recipeApi: RecipeApiService,
+    private snackbar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     this.loadRecipes();
@@ -35,6 +40,10 @@ export class AuthoredComponent {
         console.log(error);
         this.error = error.error?.message || 'Could not load recipes!';
         this.loading = false;
+        this.snackbar.open(this.error as any, '', {
+          duration: 3000,
+          panelClass: ['my-error-snackbar'],
+        });
       },
     });
   }

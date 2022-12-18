@@ -4,7 +4,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { addToAuthored, updateUserLocalStorage } from 'src/app/+store/actions';
-import { IRecipeMain } from 'src/app/interfaces';
 import { RecipeApiService } from 'src/app/services/recipe.service';
 
 @Component({
@@ -82,6 +81,7 @@ export class EditRecipeComponent {
         ingredients: this.ingredients.value.map((ing: any) => ing?.name),
         tags: this.recipeForm.value.tags.split(','),
       };
+      console.log(data);
       this.recipeApi.updateRecipe(data, this.id).subscribe({
         next: (res: any) => {
           this.loading = false;

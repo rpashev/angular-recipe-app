@@ -35,7 +35,7 @@ export class DetailsComponent {
 
     this.getSingleRecipe();
     this.store.select(getFavorites).subscribe((favs) => {
-      if (favs.includes(this.id)) {
+      if (favs?.includes(this.id)) {
         this.isInFavorites = true;
       } else {
         this.isInFavorites = false;

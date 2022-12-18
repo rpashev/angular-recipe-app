@@ -5,7 +5,7 @@
   class="form"
   [formGroup]="recipeForm"
   (ngSubmit)="onSubmit()"
-  *ngIf="!loadingExistingRecipe && !error"
+  *ngIf="!loadingExistingRecipe"
 >
   <section class="form-section first-section">
     <mat-form-field class="form-control">

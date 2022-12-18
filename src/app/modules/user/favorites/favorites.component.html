@@ -1,10 +1,12 @@
 <div class="page">
   <h1 class="mat-headline-4 title">MY FAVORITE RECIPES</h1>
-  <p *ngIf="(!recipes || recipes.length == 0) && !loading">
+  <p
+    class="mat-headline-5"
+    *ngIf="(!recipes || recipes.length == 0) && !error && !loading"
+  >
     No recipes in favorites yet!
   </p>
   <mat-spinner [diameter]="64" *ngIf="loading" class="spinner"></mat-spinner>
-  <p *ngIf="error">{{ error }}</p>
   <div *ngIf="recipes" class="my-grid">
     <app-recipe-user-card
       *ngFor="let recipe of recipes"
