@@ -85,11 +85,8 @@ export class EditRecipeComponent {
       };
       console.log(data);
       this.recipeApi.updateRecipe(data, this.id).subscribe({
-        next: (res: any) => {
+        next: () => {
           this.loading = false;
-
-          this.store.dispatch(addToAuthored(res?._id));
-          this.store.dispatch(updateUserLocalStorage());
           this.router.navigate(['/authored']);
         },
         error: (error) => {

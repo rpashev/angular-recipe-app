@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { addToAuthored, updateUserLocalStorage } from '../+store/actions';
 import { IRecipeMain } from '../interfaces';
 
 @Injectable({
@@ -33,7 +35,12 @@ export class RecipeApiService {
   }
   createRecipe(recipe: IRecipeMain) {
     const url = this.baseUrl + 'recipes';
-    return this.http.post(url, recipe);
+    return this.http.post(url, recipe).pipe(
+      tap((res: any) => {
+        this.store.dispatch(addToAuthored(res?._id));
+        this.store.dispatch(updateUserLocalStorage());
+      })
+    );
   }
   updateRecipe(recipe: IRecipeMain, recipeId: string) {
     const url = this.baseUrl + 'recipes/' + recipeId;

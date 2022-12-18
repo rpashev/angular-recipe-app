@@ -61,9 +61,6 @@ export class CreateRecipeComponent {
       this.recipeApi.createRecipe(data).subscribe({
         next: (res: any) => {
           this.loading = false;
-
-          this.store.dispatch(addToAuthored(res?._id));
-          this.store.dispatch(updateUserLocalStorage());
           this.router.navigate(['/authored']);
         },
         error: (error) => {
