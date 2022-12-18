@@ -3,7 +3,7 @@ A responsive single page application built with Angular, allowing users to brows
 
 Here you can find the **[REST API](https://github.com/rpashev/recipes-REST-express)** that I have created for the app.  
 
-> Live demo **[HERE](soon)**
+> Live demo **[HERE](https://mellifluous-gumption-c80f11.netlify.app/)**
 
 ## Table of Contents
 * [General Info](#general-information)
@@ -93,6 +93,7 @@ An Angular application, built for a course I was taking at Software University i
 - add a rating feature
 - add a review feature
 - predefined tags as options/checkboxes instead of entered as text inputs
+- more complex ingredient input
 - recipe directions provided in steps
 - filters for recipes based on tags, rating, date created, etc.
 - implement an "Auto Logout" functionality on JWT expiration
