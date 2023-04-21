@@ -3,7 +3,7 @@ A responsive single page application built with Angular, allowing users to brows
 
 Here you can find the **[REST API](https://github.com/rpashev/recipes-REST-express)** that I have created for the app.  
 
-> Live demo **[HERE](https://mellifluous-gumption-c80f11.netlify.app/)**
+> Live demo **[HERE](https://my-recipes-rp.netlify.app/)**
 
 ## Table of Contents
 * [General Info](#general-information)
