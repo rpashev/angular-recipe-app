@@ -72,7 +72,7 @@ An Angular application, built for a course I was taking at Software University i
 
 1. Make sure you have **`node`** and **`npm`** installed globally on your machine.  
 
-3. Clone the repo  
+2. Clone the repo  
     ### `git clone https://github.com/rpashev/angular-recipe-app.git`  
 
 3. Install NPM packages  
@@ -83,8 +83,10 @@ An Angular application, built for a course I was taking at Software University i
 
 5. You can view the app on [http://localhost:4200](http://localhost:4200)  
  
-7. To build for production run the following command  
+6. To build for production run the following command  
     ### `ng build`
+
+7. If you want to connect to the backend follow the instructions [here](https://github.com/rpashev/recipes-REST-express/#readme)
 
 
 ## Room for Improvement
